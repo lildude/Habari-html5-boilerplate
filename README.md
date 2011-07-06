@@ -1,3 +1,34 @@
+# Habari HTML5 Boilerplate Theme
+
+This is my attempt at creating a HTML5 Boilerplate theme for Habari that can be used to create a good solid HTML5 base from which other themes can be created.  The theme itself is very basic as it is not intended to be a theme you use as-is.
+
+## Howto Use the Habari HTML5 Boilerplate Theme
+
+<ol>
+	<li>Clone this repo (or your own fork) into your user/themes directory on your development server.
+	<pre><code>$ git clone <repo> ./html5boiler</code></pre>
+	</li>
+	<li>Change into the build directory and create your own base theme and when prompted enter the name you wish to give your theme...
+	<pre><code>$ cd user/themes/html5boiler/build
+	$ ./createproject.sh</code></pre>
+This will create a new theme directory in user/themes with the name you have provided above.</li>
+	<li>Modify this new theme to suit your needs and build your new awesome design.</li>
+	<li>When you're ready to publish your theme, it's time to optimise it.  Change into the build directory and use ant to optimise your theme.
+	<pre><code>$ cd user/themes/<your theme name>/build
+	$ ant</code></pre>
+This ant command takes all the same options as that provided by the HTML5 Boilerplate, so you may want to refer to its documentation for more details.</li>
+<li>Once ant has finished running, you will now have an "intermediate" and "publish" directories in your theme.  The "publish" directory contains your optimised theme files.  Transfer this directory to the user/themes directory on your production host and don't forget to give the destination directory a useful name, ideall the same name as the theme name.</li>
+</ol>
+
+That's it.  You now have an optimised Habari theme on your production server.
+
+You can continue to develop your theme on your development host.  Each time you're ready to publish your updates, perform 4 and 5 above.  If you want to make your life even easier, you could put the "publish" directory into its own repository (git/svn/hg) and use this to push/pull to your production host.
+
+---
+
+The Original HTML5 Boilerplate README.md follows...
+
+
 #  HTML5 Boilerplate [http://html5boilerplate.com](http://html5boilerplate.com)
 
 ## Changelog:
