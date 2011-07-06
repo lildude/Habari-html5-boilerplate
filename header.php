@@ -22,8 +22,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	<link rel="canonical" href="<?php URL::out(); ?>">
-	<link rel="shortcut icon" href="<?php Site::out_url( 'theme' ); ?>/images/favicon.ico">
-	<link rel="apple-touch-icon" href="<?php Site::out_url( 'theme' ); ?>/images/apple-touch-icon.png">
+	<link rel="shortcut icon" href="<?php Site::out_url( 'theme' ); ?>/img/favicon.ico">
+	<link rel="apple-touch-icon" href="<?php Site::out_url( 'theme' ); ?>/img/apple-touch-icon.png">
 
 	<!-- More ideas for your <head> here: h5bp.com/docs/#head-Tips -->
 
