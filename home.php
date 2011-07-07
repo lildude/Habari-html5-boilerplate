@@ -15,8 +15,13 @@ foreach ( $posts as $post ) : ?>
 					<?php echo $post->content_out; ?>
 				</div>
 			</article>
+		<?php if ( $request->display_entry === true ) : // Only display comments on posts ?>
+			<div class="entry-comments" id="comments">
+				<?php $theme->display( 'comments' ); ?>
+			</div>
+		<?php endif; ?>
 <?php endforeach; ?>
-
+		
 		</div> <!-- close #main -->
 		
 <?php $theme->display( 'footer' ); ?>
