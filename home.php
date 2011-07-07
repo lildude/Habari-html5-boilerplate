@@ -18,6 +18,5 @@ foreach ( $posts as $post ) : ?>
 <?php endforeach; ?>
 
 		</div> <!-- close #main -->
-<?php 
-$theme->display( 'sidebar' );
-$theme->display( 'footer' ); ?>
+		
+<?php $theme->display( 'footer' ); ?>
