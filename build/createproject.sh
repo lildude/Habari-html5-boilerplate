@@ -1,20 +1,21 @@
 #!/usr/bin/env bash
 
-#Generate a new project from your HTML5 Boilerplate repo clone
+#Generate a new theme from your Habari HTML5 Boilerplate repo clone
 #by: Rick Waldron & Michael Cetrulo
+# Modified for Habari by Colin Seymour
 
 
 ## first run
-# $ cd html5-boilerplate/build
-# $ chmod +x createproject.sh && ./createproject.sh
+# $ cd habari-html5-boilerplate/build
+# $ chmod +x createtheme.sh && ./createtheme.sh
 
 ## usage
-# $ cd html5-boilerplate/build
-# $ ./createproject.sh
+# $ cd habari-html5-boilerplate/build
+# $ ./createtheme.sh
 #
 # OR
 # $ cd html5-boilerplate/build
-# $ ./createproject.sh newThemeName
+# $ ./createtheme.sh newThemeName
 
 # find project root
 cur=$(basename $(pwd))
@@ -22,17 +23,17 @@ cur=$(basename $(pwd))
 if [[ $cur == 'build' ]]; then
 	src=$(dirname $(pwd))
 else
-	echo "fatal: Please run createproject.sh from within the 'build' directory" >&2
+	echo "fatal: Please run createtheme.sh from within the 'build' directory" >&2
 	exit 1
 fi
 
 [[ -d $src ]] || {
   echo "fatal: could not determine html5-boilerplate's root directory." >&2
-  echo "Please ensure you run createproject.sh from within the 'build' directory" >&2
+  echo "Please ensure you run createtheme.sh from within the 'build' directory" >&2
   exit 1
 }
 
-# get a name for new project
+# get a name for new theme
 
 # Accept a cli option
 name=$1
@@ -40,7 +41,7 @@ name=$1
 # Or prompt for a name if one not given
 while [[ -z $name ]]
 do
-    echo "To create a new html5-boilerplate theme, enter a new theme name:"
+    echo "To create a new habari-html5-boilerplate theme, enter a new theme name:"
     read name || exit
 done
 
