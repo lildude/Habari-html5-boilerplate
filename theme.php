@@ -95,23 +95,27 @@ class html5BoilerplateTheme extends Theme
 		/* All JavaScript at the bottom, except for Modernizr and Respond.
 	       Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
 	       For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ */
-		// Javascript in the header
-		Stack::add( 'template_header_javascript', Site::get_url( 'theme' ) . '/js/libs/modernizr-2.0.min.js', 'modernizr' );
-		Stack::add( 'template_header_javascript', Site::get_url( 'theme' ) . '/js/libs/respond.min.js', 'respond' );
 		
-		// Javascript in the footer
-		// Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline
-		Stack::add( 'template_footer_javascript', 'http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js', 'jquery' );
-		Stack::add( 'template_footer_javascript', 'window.jQuery || document.write(\'<script src="js/libs/jquery-1.6.1.min.js"><\/script>\')', 'jq_fallback', 'jquery' );
-		
-		// Scripts concatenated and minified via ant build script 
-		Stack::add( 'template_footer_javascript', array( Site::get_url( 'theme' ) . '/js/plugins.js', 'async' ), 'jq_plugins', 'jq_fallback' );
-		Stack::add( 'template_footer_javascript', array( Site::get_url( 'theme' ) . '/js/script.js', 'async' ), 'jq_scripts', 'jq_fallback' );
-		
-		// Google Analytics. See http://mathiasbynens.be/notes/async-analytics-snippet for details on this snippet. Set your site's ID in the theme configuration
-		$gaID = Options::get( __CLASS__ . '__gaID');
-		if ( $gaID ) {
-			Stack::add( 'template_footer_javascript', "var _gaq=[['_setAccount','${gaID}'],['_trackPageview'],['_trackPageLoadTime']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'));", 'google_analytics' );
+		// Don't add Javascript to 404
+		if ( ! $this->request->display_404 ) {
+			// Javascript in the header
+			Stack::add( 'template_header_javascript', Site::get_url( 'theme' ) . '/js/libs/modernizr-2.0.min.js', 'modernizr' );
+			Stack::add( 'template_header_javascript', Site::get_url( 'theme' ) . '/js/libs/respond.min.js', 'respond' );
+
+			// Javascript in the footer
+			// Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline
+			Stack::add( 'template_footer_javascript', 'http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js', 'jquery' );
+			Stack::add( 'template_footer_javascript', 'window.jQuery || document.write(\'<script src="js/libs/jquery-1.6.1.min.js"><\/script>\')', 'jq_fallback', 'jquery' );
+
+			// Scripts concatenated and minified via ant build script 
+			Stack::add( 'template_footer_javascript', array( Site::get_url( 'theme' ) . '/js/plugins.js', 'async' ), 'jq_plugins', 'jq_fallback' );
+			Stack::add( 'template_footer_javascript', array( Site::get_url( 'theme' ) . '/js/script.js', 'async' ), 'jq_scripts', 'jq_fallback' );
+
+			// Google Analytics. See http://mathiasbynens.be/notes/async-analytics-snippet for details on this snippet. Set your site's ID in the theme configuration
+			$gaID = Options::get( __CLASS__ . '__gaID');
+			if ( $gaID ) {
+				Stack::add( 'template_footer_javascript', "var _gaq=[['_setAccount','${gaID}'],['_trackPageview'],['_trackPageLoadTime']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'));", 'google_analytics' );
+			}
 		}
 	}
 		
