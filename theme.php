@@ -102,7 +102,9 @@ class html5BoilerplateTheme extends Theme
 		
 		// Google Analytics. See http://mathiasbynens.be/notes/async-analytics-snippet for details on this snippet. Set your site's ID in the theme configuration
 		$gaID = Options::get( __CLASS__ . '__gaID');
-		Stack::add( 'template_footer_javascript', "var _gaq=[['_setAccount','${gaID}'],['_trackPageview'],['_trackPageLoadTime']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'));", 'google_analytics' );
+		if ( $gaID ) {
+			Stack::add( 'template_footer_javascript', "var _gaq=[['_setAccount','${gaID}'],['_trackPageview'],['_trackPageLoadTime']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'));", 'google_analytics' );
+		}
 	}
 		
 }
