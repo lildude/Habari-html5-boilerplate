@@ -12,6 +12,8 @@ class html5BoilerplateTheme extends Theme
 		// Truncate content excerpt at "more" or 56 characters...
 		Format::apply( 'autop', 'post_content_excerpt' );
 		Format::apply_with_hook_params( 'more', 'post_content_excerpt', '', 56, 1 );
+		// Apply Format::tag_and_list() to post tags...
+		Format::apply( 'tag_and_list', 'post_tags_out' );
 	}
 
 	/**
