@@ -79,6 +79,14 @@ class html5BoilerplateTheme extends Theme
 		else {
 			$this->page_title = Options::get('title');
 		}
+		
+		// Make posts an instance of Posts if it's just one
+		if ( $this->posts instanceof Post ) {
+			$this->posts = new Posts( array( $this->posts ) );
+		}
+		else {
+			$this->show_page_selector = true;
+		}
 
 		// Add the stylesheets
 		Stack::add( 'template_stylesheet', array( Site::get_url( 'theme' ) . '/css/style.css', 'screen' ), 'style' );
