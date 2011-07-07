@@ -24,7 +24,8 @@
     <!-- merge the pages properties -->
     <var name="page-files" value="${file.pages}, ${file.pages.default.include}"/>
 
-<!-- Test for Ant Version Delete this task and all instances of overwrite='no' if you can't upgrade to 1.8.2-->
+	<!-- Test for Ant Version Delete this task and all instances of overwrite='no' if you can't upgrade to 1.8.2-->
+	<!-- 
 	<fail message="All features of the build script require Ant version 1.8.2. Please upgrade to 1.8.2 or remove all instances of 'overwrite=no' (and this fail task) from the build script to continue">
 		<condition>
 			<not>
@@ -32,7 +33,7 @@
 			</not>
 		</condition>
 	</fail>
-    
+    -->
     <!--
     *************************************************
     * BASE TARGETS                                  *
@@ -181,11 +182,11 @@
 	<target name="jslint">
       <apply dir="${dir.source}/${dir.js}" executable="java" parallel="false" failonerror="true">
 			<fileset dir="./${dir.source}/">
-        <include name="**/${dir.js}/*.js"/>
-        <exclude name="**/*.min.js"/>
-        <exclude name="**/${dir.js.libs}/"/>
-        <exclude name="**/${dir.publish}/"/>
-		  </fileset> 
+				<include name="**/${dir.js}/*.js"/>
+				<exclude name="**/*.min.js"/>
+				<exclude name="**/${dir.js.libs}/"/>
+				<exclude name="**/${dir.publish}/"/>
+			</fileset> 
 			<arg value="-jar" />
 			<arg path="./${dir.build.tools}/${tool.rhino}" />
 			<arg path="./${dir.build.tools}/${tool.jslint}" />
@@ -200,11 +201,11 @@
 	<target name="jshint">
       <apply dir="${dir.source}/${dir.js}" executable="java" parallel="false" failonerror="true">
 			<fileset dir="./${dir.source}/">
-        <include name="**/${dir.js}/*.js"/>
-        <exclude name="**/*.min.js"/>
-        <exclude name="**/${dir.js.libs}/"/>
-        <exclude name="**/${dir.publish}/"/>
-		  </fileset> 
+				<include name="**/${dir.js}/*.js"/>
+				<exclude name="**/*.min.js"/>
+				<exclude name="**/${dir.js.libs}/"/>
+				<exclude name="**/${dir.publish}/"/>
+			</fileset> 
 			<arg value="-jar" />
 			<arg path="./${dir.build.tools}/${tool.rhino}" />
 			<arg path="./${dir.build.tools}/${tool.jshint}" />
@@ -472,7 +473,8 @@
     <target name="-js.main.concat" depends="-js.all.minify" description="(PRIVATE) Concatenates the JS files in dir.js">
         <echo message="Concatenating Main JS scripts..."/>
         <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
-        <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.js" overwrite="no">
+        <!-- Ant 1.8.2 only. <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.js" overwrite="no"> -->
+		<concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.js">
             <fileset dir="./${dir.intermediate}/">
                 <include name="${dir.js.main}/plugins.js"/>
                 <include name="${dir.js.main}/script.js"/>
@@ -486,7 +488,8 @@
 
         <echo message="Concatenating JS libraries"/>
         <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
-        <concat destfile="./${dir.intermediate}/${dir.js}/libs-concat.js" overwrite="no">
+        <!-- Ant 1.8.2 only. <concat destfile="./${dir.intermediate}/${dir.js}/libs-concat.js" overwrite="no"> -->
+		<concat destfile="./${dir.intermediate}/${dir.js}/libs-concat.js">
             <fileset dir="./${dir.intermediate}/${dir.js.mylibs}/">
                 <include name="**/*.js"/>
                 <exclude name="${file.default.js.bypass}"/>
@@ -499,7 +502,8 @@
     <target name="-js.scripts.concat" depends="-js.main.concat,-js.mylibs.concat" if="build.concat.scripts">
         <echo message="Concatenating library file with main script file"/>
         <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
-        <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.min.js" overwrite="no">
+        <!-- Ant 1.8.2 only. <concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.min.js" overwrite="no"> -->
+		<concat destfile="./${dir.intermediate}/${dir.js}/scripts-concat.min.js">
             <fileset dir="./${dir.intermediate}/${dir.js}/">
                 <include name="libs-concat.js"/>
                 <include name="scripts-concat.js"/>
@@ -582,7 +586,8 @@
         </outofdate>
 
         <!-- force the files to be overwritten with older copies from source if needhtmlrefresh is set -->
-        <copy todir="${dir.intermediate}" overwrite="${needhtmlrefresh}">
+        <!-- Ant 1.8.2 only. <copy todir="${dir.intermediate}" overwrite="${needhtmlrefresh}"> -->
+		<copy todir="${dir.intermediate}">
             <fileset dir="${dir.source}" includes="${page-files}"/>
         </copy>
 
@@ -601,7 +606,7 @@
         </replaceregexp>
         
         <echo>Remove favicon.ico reference if it is pointing to the root</echo>
-        <replaceregexp match="&lt;link rel=[&quot;']shortcut icon[&quot;'] href=[&quot;']/favicon\.ico[&quot;']&gt;" replace="">
+        <replaceregexp match="&lt;link rel=&quot;shortcut icon&quot; href=&quot;/favicon\.ico&quot;&gt;" replace="">
             <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
         <!-- we maintain the apple-touch-icon reference for Android 2.2   www.ravelrumba.com/blog/android-apple-touch-icon
@@ -627,8 +632,8 @@
                 </replaceregexp>
             </then>
             <else>
-                <replaceregexp match="href=[&quot;']([\/]?)${dir.css}\/style.css[&quot;']"
-                               replace="href=&quot;\1${style.css}&quot;" flags="g">
+                <replaceregexp match="${dir.css}\/style.css',"
+                               replace="${style.css}'," flags="g">
                     <fileset dir="./${dir.intermediate}" includes="${page-files}"/>
                 </replaceregexp>
             </else>
@@ -713,7 +718,8 @@
         <echo message="Concatenating css..."/>
         
         <!-- overwrite=no here means not to overwrite if the target is newer than the sources -->
-        <concat destfile="./${dir.intermediate}/${dir.css}/style-concat.css" overwrite="no">
+        <!-- Ant 1.8.2 only. <concat destfile="./${dir.intermediate}/${dir.css}/style-concat.css" overwrite="no"> -->
+		<concat destfile="./${dir.intermediate}/${dir.css}/style-concat.css">
             <filelist dir="./${dir.source}/${dir.css}" files="${stylesheet-files}"/>
         </concat>
         
