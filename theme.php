@@ -60,7 +60,7 @@ class html5BoilerplateTheme extends Theme
 	/**
 	 * Add some variables to the template output
 	 */
-	public function action_add_template_vars( $theme, $handler_vars )
+	public function add_template_vars()
 	{
 		if ( !$this->template_engine->assigned( 'pages' ) ) {
             $this->assign('pages', Posts::get( array( 'content_type' => 'page', 'status' => Post::status( 'published' ), 'nolimit' => 1 ) ) );
@@ -71,6 +71,12 @@ class html5BoilerplateTheme extends Theme
 		if ( !$this->template_engine->assigned( 'loggedin' ) ) {
             $this->assign('loggedin', User::identify()->loggedin );
         }
+		if ( ( $this->request->display_entry || $this->request->display_page ) && isset( $this->post ) && $this->post->title != '' ) {
+			$this->page_title = $this->post->title . ' - ' . Options::get( 'title' );
+		}
+		else {
+			$this->page_title = Options::get('title');
+		}
 
 		// Add the stylesheets
 		Stack::add( 'template_stylesheet', array( Site::get_url( 'theme' ) . '/css/style.css', 'screen' ), 'style' );
@@ -91,7 +97,10 @@ class html5BoilerplateTheme extends Theme
 		// Scripts concatenated and minified via ant build script 
 		Stack::add( 'template_footer_javascript', array( Site::get_url( 'theme' ) . '/js/plugins.js', 'async' ), 'jq_plugins', 'jq_fallback' );
 		Stack::add( 'template_footer_javascript', array( Site::get_url( 'theme' ) . '/js/script.js', 'async' ), 'jq_scripts', 'jq_fallback' );
-				
+		
+		// Google Analytics. See http://mathiasbynens.be/notes/async-analytics-snippet for details on this snippet. Set your site's ID in the theme configuration
+		$gaID = Options::get( __CLASS__ . '__gaID');
+		Stack::add( 'template_footer_javascript', "var _gaq=[['_setAccount','${gaID}'],['_trackPageview'],['_trackPageLoadTime']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'));", 'google_analytics' );
 	}
 		
 }
