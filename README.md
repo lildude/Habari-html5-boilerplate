@@ -4,30 +4,29 @@ This is my attempt at creating a HTML5 Boilerplate theme for Habari that can be 
 
 ## Howto Use the Habari HTML5 Boilerplate Theme
 
-<ol>
-	<li>Clone this repo (or your own fork) into your user/themes directory on your development server.
-	<pre><code>$ git clone <repo> ./html5boiler</code></pre>
-	</li>
-	<li>Change into the build directory and create your own base theme and when prompted enter the name you wish to give your theme...
-	<pre><code>$ cd user/themes/html5boiler/build
-	$ ./createproject.sh</code></pre>
-This will create a new theme directory in user/themes with the name you have provided above.</li>
-	<li>Modify this new theme to suit your needs and build your new awesome design.</li>
-	<li>When you're ready to publish your theme, it's time to optimise it.  Change into the build directory and use ant to optimise your theme.
-	<pre><code>$ cd user/themes/<your theme name>/build
-	$ ant</code></pre>
-This ant command takes all the same options as that provided by the HTML5 Boilerplate, so you may want to refer to its documentation for more details.</li>
-<li>Once ant has finished running, you will now have an "intermediate" and "publish" directories in your theme.  The "publish" directory contains your optimised theme files.  Transfer this directory to the user/themes directory on your production host and don't forget to give the destination directory a useful name, ideall the same name as the theme name.</li>
-</ol>
+1. Clone this repo (or your own fork) into your user/themes directory on your development server.
+	<pre><code>$ git clone git://github.com/lildude/habari-html5-boilerplate.git</code></pre>
+
+2. Change into the build directory and create your own base theme and when prompted enter the name you wish to give your theme...
+	<pre><code>$ cd user/themes/habari-html5-boilerplate/build
+$ ./createtheme.sh</code></pre>
+This will create a new theme directory in `user/themes` with the name you have provided above. You can also pass the new theme name directly as the first argument...
+	<pre><code>./createtheme.sh MyNewHTML5Theme</code></pre>
+3. Modify this new theme to suit your needs and build your new awesome design.
+
+4. When you're ready to publish your theme, it's time to optimise it.  Change into the build directory and use ant to optimise your theme.
+	<pre><code>$ cd user/themes/MyNewHTML5Theme/build
+$ ant</code></pre>
+This ant command takes all the same options as that provided by the HTML5 Boilerplate, so you may want to refer to its documentation for more details.
+5. Once ant has finished running, you will now have an `intermediate` and `publish` directories in your theme.  The `publish` directory contains your optimised theme files.  Transfer this directory to the `user/themes` directory on your production host and don't forget to give the destination directory a useful name, ideally the same name as the theme name.
 
 That's it.  You now have an optimised Habari theme on your production server.
 
-You can continue to develop your theme on your development host.  Each time you're ready to publish your updates, perform 4 and 5 above.  If you want to make your life even easier, you could put the "publish" directory into its own repository (git/svn/hg) and use this to push/pull to your production host.
-
----
+You can continue to develop your theme on your development host.  Each time you're ready to publish your updates, perform 4 and 5 above.  If you want to make your life even easier, you could put the `publish` directory into its own repository (git/svn/hg) and use this to push/pull to your production host.
 
 The Original HTML5 Boilerplate README.md follows...
 
+---
 
 #  HTML5 Boilerplate [http://html5boilerplate.com](http://html5boilerplate.com)
 
