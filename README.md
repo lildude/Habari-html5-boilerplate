@@ -24,6 +24,12 @@ That's it.  You now have an optimised Habari theme on your production server.
 
 You can continue to develop your theme on your development host.  Each time you're ready to publish your updates, perform 4 and 5 above.  If you want to make your life even easier, you could put the `publish` directory into its own repository (git/svn/hg) and use this to push/pull to your production host.
 
+## The .htaccess & robots.txt Files
+
+The original HTML5 Boilerplate provides a `.htaccess` for optimising caching etc.  To prevent problems within the theme, I've renamed this to `htaccess` (I've removed the dot).  To get the full benefits of the HTML5 Boilerplate, you will need to review the `htaccess` file and place all the changes into your main Habari `.htaccess` file **BEFORE** the Habari section.
+
+The `robots.txt` file is still included in the theme checkout, but it is not copied into the `publish` and `intermediate` directories.  Customise the `robots.txt` file to suit your needs and place into the root of your website.
+
 The Original HTML5 Boilerplate README.md follows...
 
 ---
