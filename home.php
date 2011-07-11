@@ -17,7 +17,9 @@ foreach ( $posts as $post ) : ?>
 			</article>
 		<?php if ( $request->display_entry === true ) { $theme->display( 'comments' ); } // Display comment form if viewing a single entry ?>
 <?php endforeach; ?>
-		
-		</div> <!-- close #main -->
+
+<?php $theme->display( 'sidebar' ); ?>
+
+	</div> <!-- close #main -->
 		
 <?php $theme->display( 'footer' ); ?>
