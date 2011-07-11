@@ -1,7 +1,7 @@
 <?php if ( !defined( 'HABARI_PATH' ) ) { die('No direct access'); } ?>
 
 		<footer>
-
+			<h3>Footer</h3>
 		</footer>
 	</div> <!-- end of #container -->
 	<!-- JavaScript at the bottom for fast page loading -->
