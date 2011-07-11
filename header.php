@@ -37,5 +37,14 @@
 		<header>
 			<h1><a href="<?php Site::out_url( 'habari' ); ?>/"><?php Options::out( 'title' ); ?></a></h1>
 			<p><?php Options::out( 'tagline' ); ?></p>
+			<nav>
+				<ul>
+					<li id="home"><?php if( $request->display_home || $request->display_entry ) { echo 'Home'; } else { ?><a href="<?php Site::out_url( 'habari' ); ?>">Home</a><?php } ?></li>
+					<?php foreach ( $pages as $page ) : ?>
+					<li><?php echo ( isset($post) && $page->id == $post->id ) ? $page->title : '<a href="' . $page->permalink . '" title="' . $page->title . '">' . $page->title . '</a>'; ?></li>
+					<?php endforeach; ?>
+					<li id="login"><a href="<?php URL::out( 'admin' ); ?>"><?php echo ( $user->loggedin ) ? 'Admin' : 'Login'; ?></a></li>
+				</ul>
+			</nav>
 		</header>
 		<div id="main" role="main">
