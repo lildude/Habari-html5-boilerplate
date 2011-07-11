@@ -38,6 +38,7 @@
 			<h1><a href="<?php Site::out_url( 'habari' ); ?>/"><?php Options::out( 'title' ); ?></a></h1>
 			<p><?php Options::out( 'tagline' ); ?></p>
 			<nav>
+				<h3>Menu</h3>
 				<ul>
 					<li id="home"><?php if( $request->display_home || $request->display_entry ) { echo 'Home'; } else { ?><a href="<?php Site::out_url( 'habari' ); ?>">Home</a><?php } ?></li>
 					<?php foreach ( $pages as $page ) : ?>
