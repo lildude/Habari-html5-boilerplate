@@ -30,7 +30,11 @@ The original HTML5 Boilerplate provides a `.htaccess` for optimising caching etc
 
 The `robots.txt` file is still included in the theme checkout, but it is not copied into the `publish` and `intermediate` directories.  Customise the `robots.txt` file to suit your needs and place into the root of your website.
 
-The Original HTML5 Boilerplate README.md follows...
+## Use Just the Build Scripts
+
+So you don't want to start from scratch, but you still want to take advantage of the minimizing and optimizing feature the build script offer? No problem, just copy the build directory to the theme directory on your development system, enter the directory and run `ant`.
+
+You will however need to make sure you are adding your CSS and Javascript to your theme via the `theme.php` file in the same way as the theme.php as supplied here or using the methods the normal HTML5 Boilerplate expects.
 
 ## Habari H5BP Changelog:
 
@@ -41,6 +45,8 @@ Updated base code to bring it inline with HTML5 Boilerplate 2.0
 ### v1.0 :
 
 Initial release based on HTML5 Boilerplate 1.0
+
+The Original HTML5 Boilerplate README.md follows...
 
 ---
 
