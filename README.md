@@ -41,6 +41,7 @@ Updated base code to bring it inline with HTML5 Boilerplate 2.0
 ### v1.0 :
 
 Initial release based on HTML5 Boilerplate 1.0
+
 ---
 
 #  HTML5 Boilerplate [http://html5boilerplate.com](http://html5boilerplate.com)
