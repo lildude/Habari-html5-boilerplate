@@ -1,4 +1,4 @@
-# Habari HTML5 Boilerplate Theme
+# Habari HTML5 Boilerplate Theme v2.0
 
 This is my attempt at creating a HTML5 Boilerplate theme for Habari that can be used to create a good solid HTML5 base from which other themes can be created.  The theme itself is very basic as it is not intended to be a theme you use as-is.
 
@@ -32,6 +32,15 @@ The `robots.txt` file is still included in the theme checkout, but it is not cop
 
 The Original HTML5 Boilerplate README.md follows...
 
+## Habari H5BP Changelog:
+
+### v2.0 : 
+
+Updated base code to bring it inline with HTML5 Boilerplate 2.0
+
+### v1.0 :
+
+Initial release based on HTML5 Boilerplate 1.0
 ---
 
 #  HTML5 Boilerplate [http://html5boilerplate.com](http://html5boilerplate.com)
