@@ -107,9 +107,10 @@ class html5BoilerplateTheme extends Theme
 			Stack::add( 'template_footer_javascript', 'http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js', 'jquery' );
 			Stack::add( 'template_footer_javascript', 'window.jQuery || document.write(\'<script src="js/libs/jquery-1.6.1.min.js"><\/script>\')', 'jq_fallback', 'jquery' );
 
-			// Scripts concatenated and minified via ant build script 
+			//-- scripts concatenated and minified via ant build script 
 			Stack::add( 'template_footer_javascript', array( Site::get_url( 'theme' ) . '/js/plugins.js', 'async' ), 'jq_plugins', 'jq_fallback' );
 			Stack::add( 'template_footer_javascript', array( Site::get_url( 'theme' ) . '/js/script.js', 'async' ), 'jq_scripts', 'jq_fallback' );
+			//-- end scripts
 
 			// Google Analytics. See http://mathiasbynens.be/notes/async-analytics-snippet for details on this snippet. Set your site's ID in the theme configuration
 			$gaID = Options::get( __CLASS__ . '__gaID');
