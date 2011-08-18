@@ -25,7 +25,7 @@
     <var name="page-files" value="${file.pages}, ${file.pages.default.include}"/>
 
 	<!-- Test for Ant Version Delete this task and all instances of overwrite='no' if you can't upgrade to 1.8.2-->
-	<!-- 
+	<!-- HH5BP:
 	<fail message="All features of the build script require Ant version 1.8.2. Please upgrade to 1.8.2 or remove all instances of 'overwrite=no' (and this fail task) from the build script to continue">
 		<condition>
 			<not>
@@ -618,15 +618,24 @@
                 replace="&lt;script defer src='\1/${scripts.sha}.js\'&gt;&lt;/script&gt;" flags="m">
             <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
+		<!-- HH5BP: This has been added to replace the javascripts as defined in the Stack::add() call in theme.php -->
+		<replaceregexp match="//-- scripts concatenated [\d\w\s\W]*'(.*)//-- end ((scripts)|(concatenated and minified scripts))" 
+                replace="Stack::add( 'template_footer_javascript', array( Site::get_url( 'theme' ) . '/js/${scripts.sha}.js', 'async' ), 'jq_scripts', 'jq_fallback' );" flags="s">
+            <fileset dir="${dir.intermediate}" includes="${page-files}"/>
+        </replaceregexp>
+		
         <!--[! use comments like this one to avoid having them get minified -->
 
         <echo message="Updating the HTML with the new css filename: ${style.css}"/>
-
 		<replaceregexp match="&lt;link rel=['&quot;]?stylesheet['&quot;]?\s+href=['&quot;]?(.*)/${file.root.stylesheet}(?:\?.*)?['&quot;]?\s*&gt;" 
                 replace="&lt;link rel='stylesheet' href='\1/${css.sha}.css'&gt;" flags="m">
             <fileset dir="${dir.intermediate}" includes="${page-files}"/>
         </replaceregexp>
-
+		<!-- HH5BP: This has been updated to replace the stylesheet as defined in the Stack::add() call in theme.php -->
+		<replaceregexp match="${dir.css}\/${file.root.stylesheet}',"
+					   replace="${dir.css}\/${css.sha}.css'," flags="g">
+			<fileset dir="./${dir.intermediate}" includes="${page-files}"/>
+		</replaceregexp>
     </target>
     
 	
