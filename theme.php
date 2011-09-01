@@ -99,13 +99,13 @@ class html5BoilerplateTheme extends Theme
 		// Don't add Javascript to 404
 		if ( ! $this->request->display_404 ) {
 			// Javascript in the header
-			Stack::add( 'template_header_javascript', Site::get_url( 'theme' ) . '/js/libs/modernizr-2.0.min.js', 'modernizr' );
+			Stack::add( 'template_header_javascript', Site::get_url( 'theme' ) . '/js/libs/modernizr-2.0.6.min.js', 'modernizr' );
 			Stack::add( 'template_header_javascript', Site::get_url( 'theme' ) . '/js/libs/respond.min.js', 'respond' );
 
 			// Javascript in the footer
 			// Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline
-			Stack::add( 'template_footer_javascript', 'http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js', 'jquery' );
-			Stack::add( 'template_footer_javascript', 'window.jQuery || document.write(\'<script src="js/libs/jquery-1.6.1.min.js"><\/script>\')', 'jq_fallback', 'jquery' );
+			Stack::add( 'template_footer_javascript', '//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js', 'jquery' );
+			Stack::add( 'template_footer_javascript', 'window.jQuery || document.write(\'<script src="' . Site::get_path( 'theme' ) . '/js/libs/jquery-1.6.1.min.js"><\/script>\')', 'jq_fallback', 'jquery' );
 
 			//-- scripts concatenated and minified via ant build script 
 			Stack::add( 'template_footer_javascript', array( Site::get_url( 'theme' ) . '/js/plugins.js', 'async' ), 'jq_plugins', 'jq_fallback' );
