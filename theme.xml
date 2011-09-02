@@ -5,7 +5,7 @@
 	<author url="http://lildude.co.uk">Colin Seymour</author>
 	<url>https://github.com/lildude/habari-html5-boilerplate</url>
 	<copyright>2011</copyright>
-	<version>0.2</version>
+	<version>2.0</version>
 	<template_engine>rawphpengine</template_engine>
 	<class>html5BoilerplateTheme</class>
 	<description>This is a very basic HTML5 "template theme" based on the <a href="http://html5boilerplate.com" target="_blank">HTML5 Boilerplate</a> 2.0 code. See the README.md file for usage instructions.</description>
