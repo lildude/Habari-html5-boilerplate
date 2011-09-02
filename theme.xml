@@ -3,12 +3,12 @@
 	<name>Html5BoilerPlate</name>
 	<license url="http://www.apache.org/licenses/LICENSE-2.0.html">Apache Software License 2.0</license>
 	<author url="http://lildude.co.uk">Colin Seymour</author>
-	<url>http://lildude.co.uk</url>
+	<url>https://github.com/lildude/habari-html5-boilerplate</url>
 	<copyright>2011</copyright>
-	<version>0.1</version>
+	<version>0.2</version>
 	<template_engine>rawphpengine</template_engine>
 	<class>html5BoilerplateTheme</class>
-	<description>This is a very basic HTML5 "template theme" based on the <a href="http://html5boilerplate.com" target="_blank">HTML5 Boilerplate</a> code. See the README.md file for usage instructions.</description>
+	<description>This is a very basic HTML5 "template theme" based on the <a href="http://html5boilerplate.com" target="_blank">HTML5 Boilerplate</a> 2.0 code. See the README.md file for usage instructions.</description>
 	<areas>
 		<area name="sidebar">
 			<description><![CDATA[Sidebar area]]></description>
