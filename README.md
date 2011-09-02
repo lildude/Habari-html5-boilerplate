@@ -30,7 +30,9 @@ The original HTML5 Boilerplate provides a `.htaccess` for optimising caching etc
 
 The `robots.txt` file is still included in the theme checkout, but it is not copied into the `publish` and `intermediate` directories.  Customise the `robots.txt` file to suit your needs and place into the root of your website.
 
-## Use Just the Build Scripts
+## *** EXPERIMENTAL *** Use Just the Build Scripts 
+
+*WARNING: I've only done basic testing on this so you usage may vary*
 
 So you don't want to start from scratch, but you still want to take advantage of the minimizing and optimizing feature the build script offer? No problem, just copy the build directory to the theme directory on your development system, enter the directory and run `ant`.
 
