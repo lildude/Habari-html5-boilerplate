@@ -104,7 +104,7 @@ class html5BoilerplateTheme extends Theme
 			// Javascript in the footer
 			// Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline
 			Stack::add( 'template_footer_javascript', '//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js', 'jquery' );
-			Stack::add( 'template_footer_javascript', 'window.jQuery || document.write(\'<script src="' . Site::get_path( 'theme' ) . '/js/libs/jquery-1.6.2.min.js"><\/script>\')', 'jq_fallback', 'jquery' );
+			Stack::add( 'template_footer_javascript', 'window.jQuery || document.write(\'<script src="' . Site::get_url( 'theme' ) . '/js/libs/jquery-1.6.2.min.js"><\/script>\')', 'jq_fallback', 'jquery' );
 
 			//-- scripts concatenated and minified via ant build script 
 			Stack::add( 'template_footer_javascript', array( Site::get_url( 'theme' ) . '/js/plugins.js', 'async' ), 'jq_plugins', 'jq_fallback' );
